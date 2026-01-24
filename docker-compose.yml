@@ -40,6 +40,8 @@ services:
     image: wordpress
     restart: unless-stopped
     user: '${UID:-1000}:${GID:-1000}'
+    env_file:
+      - ./.env
     ports:
       - 8080:80
     environment:
