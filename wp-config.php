@@ -31,7 +31,7 @@ define( 'DB_USER', getenv('DATABASE_USER') );
 define( 'DB_PASSWORD', getenv('DATABASE_PASSWORD') );
 
 /** Database hostname */
-define( 'DB_HOST', getenv('DATABASE_DBNAME') );
+define( 'DB_HOST', getenv('DATABASE_HOST') );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
