@@ -24,52 +24,16 @@ jobs:
       - name: 🏗️ Build project
         run: npm run build
 
-      - name: 🔑 Setup TimeWeb SSH
+      - name: 🔑 Setup SSH
         run: |
           mkdir -p ~/.ssh
           chmod 700 ~/.ssh
 
-          # Сохраняем ключ TimeWeb (ИМЕННО В ТАКОМ ФОРМАТЕ!)
           cat > ~/.ssh/id_rsa << 'EOF'
           ${{ secrets.SSH_PRIVATE_KEY }}
           EOF
 
           chmod 600 ~/.ssh/id_rsa
-
-          # Настройка для TimeWeb
-          cat > ~/.ssh/config << EOF
-          Host timeweb
-            HostName ${{ secrets.SSH_HOST }}
-            User ${{ secrets.SSH_USER }}
-            IdentityFile ~/.ssh/id_rsa
-            Port 22
-            StrictHostKeyChecking no
-            UserKnownHostsFile /dev/null
-            ConnectTimeout 30
-            ServerAliveInterval 300
-            ServerAliveCountMax 2
-            TCPKeepAlive yes
-          EOF
-
-          chmod 600 ~/.ssh/config
-
-      - name: 🚀 Deploy to TimeWeb
+      - name: 🚀 Deploy
         run: |
-          echo "🔄 Deploying to TimeWeb server..."
-
-          # ВАЖНО: TimeWeb часто требует относительный путь от домашней директории
-          REMOTE_PATH="~/public_html"
-
-          # Синхронизируем папку билда
-          rsync -avz --progress \
-            --exclude='.git' \
-            --exclude='node_modules' \
-            --exclude='.github' \
-            -e "ssh -F ~/.ssh/config" \
-            ./dist/ \
-            timeweb:$REMOTE_PATH/
-            
-          echo "✅ Files uploaded to TimeWeb!"
-
-          # Проверяем
-          ssh -F ~/.ssh/config timeweb "ls -la $REMOTE_PATH | head -5"
+          rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/public_html/
