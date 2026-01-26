@@ -61,11 +61,7 @@ jobs:
         run: npm ci
 
       - name: 🏗️ Build project
-        run: |
-          npm run build
-          echo ${{ secrets.SSH_PRIVATE_KEY }}
-          echo ${{ secrets.SSH_HOST }}
-          echo ${{ secrets.SSH_USER }}
+        run: npm run build
 
       - name: 🚀 Deploy
         uses: easingthemes/ssh-deploy@v2.2.11
