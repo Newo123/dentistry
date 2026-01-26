@@ -1,4 +1,43 @@
-name: Deploy to TimeWeb
+# name: Deploy to TimeWeb
+
+# on:
+#   push:
+#     branches: [main]
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: 📥 Checkout code
+#         uses: actions/checkout@v4
+
+#       - name: 🟢 Setup Node.js
+#         uses: actions/setup-node@v4
+#         with:
+#           node-version: '20'
+#           cache: 'npm'
+
+#       - name: 📦 Install dependencies
+#         run: npm ci
+
+#       - name: 🏗️ Build project
+#         run: npm run build
+
+#       - name: 🔑 Setup SSH
+#         run: |
+#           mkdir -p ~/.ssh
+#           chmod 700 ~/.ssh
+
+#           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+#           chmod 600 ~/.ssh/id_rsa
+#           ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+#           chmod 644 ~/.ssh/known_hosts
+#       - name: 🚀 Deploy
+#         run: |
+#           rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/public_html/
+
+name: Deploy
 
 on:
   push:
@@ -15,7 +54,7 @@ jobs:
       - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
           cache: 'npm'
 
       - name: 📦 Install dependencies
@@ -24,16 +63,20 @@ jobs:
       - name: 🏗️ Build project
         run: npm run build
 
-      - name: 🔑 Setup SSH
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-
-          cat > ~/.ssh/id_rsa << 'EOF'
-          ${{ secrets.SSH_PRIVATE_KEY }}
-          EOF
-
-          chmod 600 ~/.ssh/id_rsa
       - name: 🚀 Deploy
-        run: |
-          rsync -avz ./ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/public_html/
+        uses: easingthemes/ssh-deploy@v2.2.11
+        with:
+          # Обязательные параметры
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          TARGET: /public_html/
+          SOURCE: ./
+
+          # Опциональные параметры (настройте по необходимости)
+          ARGS: '-avzr'
+          SCRIPT_BEFORE: |
+            echo "Начинаем деплой на $(date)"
+          SCRIPT_AFTER: |
+            echo "Деплой завершен успешно!"
+            echo "Очистка кэша..."
