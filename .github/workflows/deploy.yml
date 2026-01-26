@@ -64,19 +64,9 @@ jobs:
         run: npm run build
 
       - name: 🚀 Deploy
-        uses: easingthemes/ssh-deploy@v2.2.11
+        uses: appleboy/ssh-action@v1
         with:
-          # Обязательные параметры
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          REMOTE_HOST: ${{ secrets.SSH_HOST }}
-          REMOTE_USER: ${{ secrets.SSH_USER }}
-          TARGET: '/public_html/'
-          SOURCE: './'
-
-          # Опциональные параметры (настройте по необходимости)
-          ARGS: '-rlgoDzvc -i --delete'
-          SCRIPT_BEFORE: |
-            echo "Начинаем деплой на $(date)"
-          SCRIPT_AFTER: |
-            echo "Деплой завершен успешно!"
-            echo "Очистка кэша..."
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          port: ${{ secrets.PORT || 22 }}
