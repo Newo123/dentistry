@@ -74,11 +74,11 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           REMOTE_HOST: ${{ secrets.SSH_HOST }}
           REMOTE_USER: ${{ secrets.SSH_USER }}
-          TARGET: /public_html/
-          SOURCE: ./
+          TARGET: '/public_html/'
+          SOURCE: './'
 
           # Опциональные параметры (настройте по необходимости)
-          ARGS: '-avzr'
+          ARGS: '-rlgoDzvc -i --delete'
           SCRIPT_BEFORE: |
             echo "Начинаем деплой на $(date)"
           SCRIPT_AFTER: |
