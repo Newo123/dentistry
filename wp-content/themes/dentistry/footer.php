@@ -29,7 +29,7 @@
             <a href="<?= SITE_WHATSAPP['url'] ?? ''; ?>" target="_blank"><img class="header-socs__icon" src="<?= get_template_directory_uri() ?>/img/soc-wa.svg" alt="WhatsApp" /></a>
           </div>
         </div>
-        <div class="footer__links-other"><a data-modal-open="politic">Лицензия</a><a data-modal-open="politic">Политика конфиденциальности</a></div>
+        <div class="footer__links-other"><a data-modal-open="license">Лицензия</a><a data-modal-open="politic">Политика конфиденциальности</a></div>
       </div>
     </div>
   </div>
@@ -74,25 +74,25 @@
     <div class="modal-content__main">
       <h3 class="modal__title">Получите персональную <br /> консультацию от нашего специалиста</h3>
       <p class="modal__subtitle">Оставьте контакты — мы свяжемся с вами и ответим на все вопросы</p>
-      <form class="modal-form-request__form" data-form="data-form">
+      <form class="modal-form-request__form" data-form="data-form" data-send='<?= get_template_directory_uri() . '/callback/callback.php' ?>' data-hash='<?= get_template_directory_uri() . '/callback/get_hash.php' ?>'>
         <div class="sec-form__input">
           <label>Телефон</label>
-          <input type="tel" placeholder="+7 (999) 111-22-33" data-imask="data-imask" data-form-phone="data-form-phone" />
+          <input name="phone" type="tel" placeholder="+7 (999) 111-22-33" data-imask="data-imask" data-form-phone="data-form-phone" />
           <div class="error">Введите корректные данные</div>
         </div>
         <div class="sec-form__input">
           <label>Имя</label>
-          <input type="text" placeholder="Введите ваше имя" data-form-name="data-form-name" />
+          <input name="name" type="text" placeholder="Введите ваше имя" data-form-name="data-form-name" />
           <div class="error">Введите корректные данные</div>
         </div>
         <button class="btn btn-green w-100p sec-form__submit" type="submit" data-submit="data-submit">Оставить заявку</button>
         <div class="custom-checkbox">
           <label>
-            <input type="checkbox" data-form-checkbox="data-form-checkbox" />
+            <input name="agreement" type="checkbox" data-form-checkbox="data-form-checkbox" />
             <div class="custom-checkbox__box"></div>
           </label>
           <p>
-            Нажимая на кнопку вы даёте согласие на обработку <a href="#">персональных данных</a> и соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+            Нажимая на кнопку вы даёте согласие на обработку <a data-modal-open="privacy">персональных данных</a> и соглашаетесь с <a data-modal-open="politic">политикой конфиденциальности</a></p>
         </div>
       </form>
     </div>
@@ -100,12 +100,33 @@
 </div>
 <div class="modal-politic modal-wrapper" data-modal-block="politic">
   <div class="modal-content">
-    <button class="x-btn" title="Close (Esc)" type="button" data-modal-close="politic"> <img src="<?= get_template_directory_uri() ?>/img/x-icon.svg" alt="" /></button>
+    <button class="x-btn" title="Close (Esc)" type="button" data-modal-close="politic"> <img src="<?= get_template_directory_uri() ?>/img/x-icon.svg" alt="icon" /></button>
     <div class="modal-content__main">
       <h3 class="modal__title">Политика конфиденциальности</h3>
       <div class="modal__text">
-        <p>Имеется спорная точка зрения, гласящая примерно следующее: диаграммы связей, вне зависимости от их уровня, должны быть объединены в целые кластеры себе подобных. В своём стремлении улучшить пользовательский опыт мы упускаем, что диаграммы связей являются только методом политического участия и превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Лишь диаграммы связей рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок.</p>
-        <p>Имеется спорная точка зрения, гласящая примерно следующее: диаграммы связей, вне зависимости от их уровня, должны быть объединены в целые кластеры себе подобных. В своём стремлении улучшить пользовательский опыт мы упускаем, что диаграммы связей являются только методом политического участия и превращены в посмешище, хотя само их существование приносит несомненную пользу обществу. Лишь диаграммы связей рассмотрены исключительно в разрезе маркетинговых и финансовых предпосылок.</p>
+        <?= get_field('site_policy', 'options') ?>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-politic modal-wrapper" data-modal-block="license">
+  <div class="modal-content">
+    <button class="x-btn" title="Close (Esc)" type="button" data-modal-close="license"> <img src="<?= get_template_directory_uri() ?>/img/x-icon.svg" alt="icon" /></button>
+    <div class="modal-content__main">
+      <h3 class="modal__title">Лицензия</h3>
+      <div class="modal__text">
+        <?= get_field('site_license', 'options') ?>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-politic modal-wrapper" data-modal-block="privacy">
+  <div class="modal-content">
+    <button class="x-btn" title="Close (Esc)" type="button" data-modal-close="privacy"> <img src="<?= get_template_directory_uri() ?>/img/x-icon.svg" alt="icon" /></button>
+    <div class="modal-content__main">
+      <h3 class="modal__title">Правила обработки персональных данных</h3>
+      <div class="modal__text">
+        <?= get_field('site_privacy', 'options') ?>
       </div>
     </div>
   </div>
