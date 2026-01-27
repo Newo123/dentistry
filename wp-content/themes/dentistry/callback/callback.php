@@ -129,6 +129,7 @@ function main()
 
 
   // Получаем тип шаблона
+
   $template = $_GET['template'] ?? 'callback';
 
   // Отправляем на почту
