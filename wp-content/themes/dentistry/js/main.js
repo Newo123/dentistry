@@ -254,7 +254,6 @@ document.addEventListener('DOMContentLoaded', () => {
 						body: formData,
 					});
 					const response = await request.json();
-					console.log(response);
 					if (response?.success) {
 						allModals.forEach(modal => modal.classList.remove('active'));
 						modalFormSuccess.classList.add('active');

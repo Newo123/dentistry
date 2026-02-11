@@ -16,7 +16,7 @@ $images = get_field('necessary_images');
             <div class="swiper-wrapper">
               <?php if ($images): ?>
                 <?php foreach ($images as $item): ?>
-                  <div class="swiper-slide img-cover"><img src="<?= $item['necessary_images_item']; ?>" alt="slide" /></div>
+                  <div class="swiper-slide img-cover"><a href="<?= $item['necessary_images_item']; ?>" data-fancybox="necessary_images_item"><img src="<?= $item['necessary_images_item']; ?>" alt="slide" /></a></div>
                 <?php endforeach; ?>
               <?php endif; ?>
             </div>
