@@ -11,7 +11,12 @@ $image = get_field('main_image');
 <section class="sec-banner sec-p-y--bottom" id="banner">
   <div class="container">
     <div class="sec-banner__wrap">
-      <div class="d-none-min-tablet">
+
+      <div class="sec-banner__wrap-left">
+        <div class="sec-banner__title h1"><?= $title; ?></div>
+        <div class="sec-banner__text"><?= $text; ?></div>
+        <button class="btn btn-green w-100p" data-modal-open="form-request">Задать вопрос координатору</button>
+
         <div class="sec-banner__benefits">
           <?php if ($motivation): ?>
             <?php foreach ($motivation as $item): ?>
@@ -23,14 +28,9 @@ $image = get_field('main_image');
           <?php endif; ?>
         </div>
       </div>
-      <div class="sec-banner__wrap-left">
-        <div class="sec-banner__title h1"><?= $title; ?></div>
-        <div class="sec-banner__text"><?= $text; ?></div>
-        <button class="btn btn-green w-100p" data-modal-open="form-request">Задать вопрос координатору</button>
-      </div>
       <div class="sec-banner__wrap-right">
         <div class="sec-banner__img"><img src="<?= $image; ?>" alt="banner" /></div>
-        <div class="d-none-max-tablet">
+        <!-- <div class="d-none-max-tablet">
           <div class="sec-banner__benefits">
             <?php if ($motivation): ?>
               <?php foreach ($motivation as $item): ?>
@@ -41,7 +41,7 @@ $image = get_field('main_image');
               <?php endforeach; ?>
             <?php endif; ?>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>

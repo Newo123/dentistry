@@ -15,6 +15,7 @@ get_header();
   <?= get_template_part('template-parts/faq-block'); ?>
   <?= get_template_part('template-parts/gallery-block'); ?>
   <?= get_template_part('template-parts/reviews-block'); ?>
+  <?= get_template_part('template-parts/video-block'); ?>
   <?= get_template_part('template-parts/contacts-block'); ?>
   <?= get_template_part('template-parts/form-block'); ?>
 </main>
