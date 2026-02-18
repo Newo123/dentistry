@@ -46,7 +46,7 @@ $items = get_field('services_items');
                         </div>
                       <?php endforeach; ?>
                     </div>
-                    <button class="btn btn-green w-100p" data-modal-open="form-request">Рассчитать стоимость</button>
+                    <button class="btn btn-green w-100p" modal-social="form-request">Рассчитать стоимость</button>
                   </div>
                 </div>
               </div>

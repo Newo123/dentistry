@@ -131,6 +131,29 @@
     </div>
   </div>
 </div>
+<div class="modal-social modal-wrapper" data-modal-block="modal-social">
+  <div class="modal-content">
+    <button class="x-btn" title="Close (Esc)" type="button" data-modal-close="modal-social"> <img src="<?= get_template_directory_uri() ?>/img/x-icon.svg" alt="icon" /></button>
+    <div class="modal-content__main">
+      <h3 class="modal__title">Получите персональную консультацию от нашего специалиста</h3>
+      <p class="modal__subtitle mb-30">Свяжитесь с нами в удобном мессенджере <br class="d-none-max-mob" /> и мы ответим на все Ваши вопросы</p>
+      <a class="btn btn-green mb-15" href="<?= SITE_TELEGRAM['url'] ?? ''; ?>" target="_blank" data-modal-close="form-social">Написать в Telegram</a>
+      <a class="btn btn-green mb-15" href="<?= SITE_WHATSAPP['url'] ?? ''; ?>" target="_blank" data-modal-close="form-social">Написать в WhatsApp</a>
+    </div>
+    <div class="modal-content__footer">
+      <div class="header-contacts max-tablet">
+        <div class="header-contacts__icon"><img src="<?= get_template_directory_uri() ?>/img/phone-icon.svg" alt="Телефон" /></div>
+        <div class="header-contacts__content"><span class="header-contacts__label">Наш телефон</span><a class="header-contacts__link" href="<?= SITE_PHONE['url'] ?>"><?= SITE_PHONE['title'] ?></a></div>
+      </div>
+      <div class="header-socs max-tablet"><span class="header-socs__title">Наши соцсети</span>
+        <div class="header-socs__list">
+          <a class="header-socs__link" href="<?= SITE_VK['url'] ?? ''; ?>" target="_blank"><img class="header-socs__icon" src="<?= get_template_directory_uri() ?>/img/soc-vk.svg" alt="VK" /></a>
+          <a class="header-socs__link" href="<?= SITE_YOUTUBE['url'] ?? ''; ?>" target="_blank"><img class="header-socs__icon" src="<?= get_template_directory_uri() ?>/img/soc-yt.svg" alt="YouTube" /></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php wp_footer(); ?>
 
