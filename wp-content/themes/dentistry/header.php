@@ -57,8 +57,8 @@ $menu_items = get_menu('header_menu');
             <a class="header-socs__link" href="<?= SITE_WHATSAPP['url'] ?? ''; ?>" target="_blank"><img class="header-socs__icon" src="<?= get_template_directory_uri() ?>/img/soc-wa.svg" alt="WhatsApp" /></a>
           </div>
         </div>
-        <button class="header-btn btn btn-green d-none-max-tablet" modal-social="form-request">Оставить заявку</button>
-        <div class="header-burger d-none-min-tablet" modal-social="header-mobile"><img src="<?= get_template_directory_uri() ?>/img/burger-menu.svg" alt="" /></div>
+        <button class="header-btn btn btn-green d-none-max-tablet" data-modal-open="modal-social">Оставить заявку</button>
+        <div class="header-burger d-none-min-tablet" data-modal-open="modal-social"><img src="<?= get_template_directory_uri() ?>/img/burger-menu.svg" alt="" /></div>
       </div>
     </div>
     <div class="header-mobile" data-modal-block="header-mobile">
@@ -86,7 +86,7 @@ $menu_items = get_menu('header_menu');
             <a class="header-socs__link" href="<?= SITE_WHATSAPP['url'] ?? ''; ?>" target="_blank"><img class="header-socs__icon" src="<?= get_template_directory_uri() ?>/img/soc-wa.svg" alt="WhatsApp" /></a>
           </div>
         </div>
-        <button class="header-btn btn btn-green" modal-social="form-request">Оставить заявку</button>
+        <button class="header-btn btn btn-green" data-modal-open="modal-social">Оставить заявку</button>
       </div>
     </div>
   </header>

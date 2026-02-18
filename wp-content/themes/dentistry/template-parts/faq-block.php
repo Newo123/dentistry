@@ -19,7 +19,7 @@ $items = get_field('faq_items');
                   <p>
                     <?= $item['faq_items_answer']; ?>
                   </p>
-                  <button class="btn btn-green w-100p" modal-social="form-request">Получить консультацию</button>
+                  <button class="btn btn-green w-100p" data-modal-open="modal-social">Получить консультацию</button>
                 </div>
               </div>
             </div>

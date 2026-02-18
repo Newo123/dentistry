@@ -15,7 +15,7 @@ $image = get_field('main_image');
       <div class="sec-banner__wrap-left">
         <div class="sec-banner__title h1"><?= $title; ?></div>
         <div class="sec-banner__text"><?= $text; ?></div>
-        <button class="btn btn-green w-100p" modal-social="form-request">Задать вопрос координатору</button>
+        <button class="btn btn-green w-100p" data-modal-open="modal-social">Задать вопрос координатору</button>
 
         <div class="sec-banner__benefits">
           <?php if ($motivation): ?>
