@@ -58,7 +58,7 @@ $menu_items = get_menu('header_menu');
           </div>
         </div>
         <button class="header-btn btn btn-green d-none-max-tablet" data-modal-open="modal-social">Оставить заявку</button>
-        <div class="header-burger d-none-min-tablet" data-modal-open="modal-social"><img src="<?= get_template_directory_uri() ?>/img/burger-menu.svg" alt="" /></div>
+        <div class="header-burger d-none-min-tablet" data-modal-open="header-mobile"><img src="<?= get_template_directory_uri() ?>/img/burger-menu.svg" alt="" /></div>
       </div>
     </div>
     <div class="header-mobile" data-modal-block="header-mobile">
